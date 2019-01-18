@@ -1,0 +1,37 @@
+---
+
+# https://eslint.org/docs/user-guide/configuring#specifying-environments
+env:
+  node: true
+  jest: true
+
+# https://github.com/babel/babel-eslint
+parser: babel-eslint
+
+plugins:
+  - react
+  - jest
+
+extends:
+  - 'airbnb-base'
+  - 'plugin:react/recommended'
+
+rules:
+  no-console: 0
+
+settings:
+  react:
+    createClass: createReactClass
+    pragma: React
+    version: 'detect'
+    flowVersion: '0.53'
+  propWrapperFunctions:
+  - forbidExtraProps
+  - property: freeze
+    object: Object
+  - property: myFavoriteWrapper
+  import/resolver:
+    node:
+      extensions:
+      - ".js"
+      - ".jsx"
