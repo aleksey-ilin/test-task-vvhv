@@ -14,6 +14,13 @@ const eventsFetchingState = handleActions({
   },
 }, 'none');
 
+const events = handleActions({
+  [actions.fetchEventsSuccess](state, { payload }) {
+    return [...state, payload];
+  },
+}, []);
+
 export default combineReducers({
   eventsFetchingState,
+  events,
 });

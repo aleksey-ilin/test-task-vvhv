@@ -1,13 +1,11 @@
 import React from 'react';
 import './App.css';
+import Events from '../containers/Events';
 
-export default class App extends React.Component {
-  render() {
-    console.log(this.props);
-    return (
-      <div>
-        events
-      </div>
-    );
-  }
-}
+const App = () => (
+  <div>
+    <Events />
+  </div>
+);
+
+export default App;
