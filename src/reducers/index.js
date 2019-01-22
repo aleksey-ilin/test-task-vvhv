@@ -16,7 +16,8 @@ const eventsFetchingState = handleActions({
 
 const events = handleActions({
   [actions.fetchEventsSuccess](state, { payload }) {
-    return [...state, payload];
+    // console.log(events);
+    return [...state, ...payload.events];
   },
 }, []);
 
