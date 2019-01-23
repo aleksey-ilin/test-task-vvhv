@@ -1,13 +1,13 @@
-import { getSearchParams } from './utils';
+import { getSearchParams, currentTime } from './utils';
 
 const corsProxy = 'https://cors-anywhere.herokuapp.com/';
 const host = 'https://kudago.com/public-api/v1.4/events/?';
-const currentTime = Math.round(Date.now() / 1000);
 const searchParams = {
-  page_size: 10,
+  page_size: 5,
   fields: 'id,title,dates,images,place,site_url',
-  actual_since: currentTime,
+  actual_since: currentTime(),
   expand: 'dates,place',
+  order_by: 'id',
 };
 
 export default {

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 export default class Events extends React.Component {
   renderEvent(event) {
-    console.log(event);
+    // console.log(event);
     return (
       <>
         <div>{event.title}</div>
@@ -14,8 +14,7 @@ export default class Events extends React.Component {
   }
 
   render() {
-    console.log(this.props);
-    console.log(this.props.events);
+    // console.log(this.props.events.length);
     if (this.props.events.length === 0) {
       return (
         <div>
