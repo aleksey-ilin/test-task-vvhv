@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { createAction } from 'redux-actions';
 import routes from '../routes';
-import { getFilteredEvents, getNormalizedEvents } from '../utils';
+import { getFilteredEvents } from '../utils';
 
 export const fetchEventsRequest = createAction('EVENTS_FETCH_REQUEST');
 export const fetchEventsSuccess = createAction('EVENTS_FETCH_SUCCESS');
@@ -37,12 +37,10 @@ export const fetchEvents = () => (dispatch) => {
         // getEvents(page + 1);
         getEvents(2, [...events, ...response.data.results]);
       } else {
-        // console.log([...events, ...response.data.results]);
+        console.log([...events, ...response.data.results]);
         const filteredEvents = getFilteredEvents([...events, ...response.data.results]);
-        // console.log(filteredEvents);
-        const normalizedEvents = getNormalizedEvents(filteredEvents);
-        console.log(normalizedEvents);
-        dispatch(fetchEventsSuccess({ events: [...events, ...response.data.results] }));
+        console.log(filteredEvents);
+        dispatch(fetchEventsSuccess({ events: filteredEvents }));
       }
     } catch (e) {
       console.log(e);

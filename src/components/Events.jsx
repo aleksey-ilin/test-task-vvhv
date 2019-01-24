@@ -7,7 +7,7 @@ export default class Events extends React.Component {
     return (
       <>
         <div>{event.title}</div>
-        <div>{/* event.dates.map(data => <p>{data.start_date}</p>) */}</div>
+        <div>{event.dates.start_date} {event.dates.start_time}</div>
         <br/>
       </>
     );
