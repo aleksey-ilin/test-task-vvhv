@@ -21,7 +21,14 @@ const events = handleActions({
   },
 }, []);
 
+const currentPage = handleActions({
+  [actions.changeCurrentpage](state, { payload }) {
+    return payload;
+  },
+}, 0);
+
 export default combineReducers({
   eventsFetchingState,
   events,
+  currentPage,
 });

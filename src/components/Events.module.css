@@ -1,0 +1,53 @@
+.root {
+  width: 80%;
+  margin: 15px;
+}
+
+.root .head {
+  height: 50px;
+  text-align: center;
+  padding: 0;
+}
+
+.root .row {
+  height: 80px;
+}
+
+.root .date {
+  width: 150px;
+  padding: 0;
+  text-align: center;
+}
+
+.root .image {
+  width: 200px;
+  padding: 0;
+  text-align: center;
+}
+
+.root .image img {
+  width: 50%;
+}
+
+.root .title {
+  width: 450px;
+  padding: 0;
+  text-align: center;
+}
+
+.root .place_title {
+  width: 400px;
+  padding: 0;
+  text-align: center;
+}
+
+.root .place_address {
+  padding: 0;
+  text-align: center;
+}
+
+.root .footer {
+  height: 50px;
+  padding: 0;
+  text-align: center;
+}
