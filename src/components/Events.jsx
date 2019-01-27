@@ -16,10 +16,13 @@ export default class Events extends React.Component {
 
   handleChangePage = (event, page) => this.props.changeCurrentPage(page);
 
-  handleChangeEvent = id => () => this.props.changeActiveEvent(id);
+  handleChangeEvent = id => () => {
+    this.props.changeActiveEvent(id);
+    this.props.fetchDescription(id);
+  };
 
   render() {
-    console.log(this.props);
+    // console.log(this.props);
     const { events, currentPage, activeEvent } = this.props;
     const { rowsPerPage, rowsHeight } = this.state;
     const emptyRows = rowsPerPage - (events.length - currentPage * rowsPerPage);
@@ -41,7 +44,7 @@ export default class Events extends React.Component {
               ? events.slice(currentPage * rowsPerPage, currentPage * rowsPerPage + rowsPerPage)
                 .map(event => (
                 <TableRow
-                  className={event.id === activeEvent ? styles.row_active : styles.row}
+                  className={event.id === activeEvent.id ? styles.row_active : styles.row}
                   key={event.id}
                   onClick={this.handleChangeEvent(event.id)}>
                   <TableCell className={styles.date}>
@@ -90,7 +93,8 @@ export default class Events extends React.Component {
 Events.propTypes = {
   events: PropTypes.array,
   currentPage: PropTypes.number,
-  activeEvent: PropTypes.number,
+  activeEvent: PropTypes.object,
   changeCurrentPage: PropTypes.func,
   changeActiveEvent: PropTypes.func,
+  fetchDescription: PropTypes.func,
 };

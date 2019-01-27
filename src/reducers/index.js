@@ -14,6 +14,18 @@ const eventsFetchingState = handleActions({
   },
 }, 'none');
 
+const descriptionFetchingState = handleActions({
+  [actions.fetchDescriptionRequest]() {
+    return 'requested';
+  },
+  [actions.fetchDescriptionFailure]() {
+    return 'failed';
+  },
+  [actions.fetchDescriptionSuccess]() {
+    return 'successed';
+  },
+}, 'none');
+
 const events = handleActions({
   [actions.fetchEventsSuccess](state, { payload }) {
     return [...state, ...payload.events];
@@ -28,12 +40,16 @@ const currentPage = handleActions({
 
 const activeEvent = handleActions({
   [actions.changeActiveEvent](state, { payload }) {
-    return payload;
+    return { id: payload };
   },
-}, 0);
+  [actions.fetchDescriptionSuccess](state, { payload }) {
+    return { ...state, description: payload };
+  },
+}, {});
 
 export default combineReducers({
   eventsFetchingState,
+  descriptionFetchingState,
   events,
   currentPage,
   activeEvent,

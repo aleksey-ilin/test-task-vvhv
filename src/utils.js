@@ -8,7 +8,8 @@ const getEndData = (startData, period) => {
 };
 
 const currentTime = getCurrentTime();
-const endData = getEndData(currentTime, 14);
+const period = 14;
+const endData = getEndData(currentTime, period);
 
 export const getFilteredEvents = events => events
   .map(event => event.dates

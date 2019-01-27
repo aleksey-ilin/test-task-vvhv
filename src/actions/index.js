@@ -11,6 +11,10 @@ export const changeCurrentPage = createAction('PAGE_CURRENT_CHANGE');
 
 export const changeActiveEvent = createAction('EVENT_ACTIVE_CHANGE');
 
+export const fetchDescriptionRequest = createAction('DESCRIPTION_FETCH_REQUEST');
+export const fetchDescriptionSuccess = createAction('DESCRIPTION_FETCH_SUCCESS');
+export const fetchDescriptionFailure = createAction('DESCRIPTION_FETCH_FAILURE');
+
 export const fetchEvents = () => (dispatch) => {
   const getEvents = async (page, events) => {
     dispatch(fetchEventsRequest());
@@ -21,7 +25,6 @@ export const fetchEvents = () => (dispatch) => {
         getEvents(page + 1, [...events, ...response.data.results]);
       } else {
         const filteredEvents = getFilteredEvents([...events, ...response.data.results]);
-        console.log(filteredEvents);
         dispatch(fetchEventsSuccess({ events: filteredEvents }));
       }
     } catch (e) {
@@ -30,4 +33,16 @@ export const fetchEvents = () => (dispatch) => {
     }
   };
   getEvents(1, []);
+};
+
+export const fetchDescription = id => async (dispatch) => {
+  dispatch(fetchDescriptionRequest());
+  try {
+    const url = routes.descriptionUrl(id);
+    const response = await await axios.get(url);
+    dispatch(fetchDescriptionSuccess(response.data));
+  } catch (e) {
+    console.log(e);
+    dispatch(fetchDescriptionFailure());
+  }
 };

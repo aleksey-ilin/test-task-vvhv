@@ -1,5 +1,5 @@
 .root {
-  width: 80%;
+  width: 70%;
   margin: 15px;
 }
 
@@ -25,7 +25,7 @@
 }
 
 .root .date {
-  width: 150px;
+  width: 100px;
   padding: 0;
   text-align: center;
 }
@@ -41,13 +41,13 @@
 }
 
 .root .title {
-  width: 450px;
+  width: 380px;
   padding: 0;
   text-align: center;
 }
 
 .root .place_title {
-  width: 400px;
+  width: 380px;
   padding: 0;
   text-align: center;
 }

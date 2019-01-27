@@ -1,13 +1,21 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styles from './App.module.css';
 import Events from '../containers/Events';
 import Description from '../containers/Description';
+import Alert from './Alert';
 
-const App = () => (
-  <div className={styles.app}>
-    <Events />
-    <Description />
-  </div>
-);
+export default class App extends React.Component {
+  render() {
+    console.log(this.props);
+    return (
+      <div className={styles.app}>
+        {this.props.events ? <><Events /><Description /></> : <Alert /> }
+      </div>
+    );
+  }
+}
 
-export default App;
+Events.propTypes = {
+  events: PropTypes.array,
+};
