@@ -14,10 +14,13 @@ import TablePaginationActions from './TablePaginationActions';
 export default class Events extends React.Component {
   state = { rowsPerPage: 10, rowsHeight: 80 };
 
-  handleChangePage = (event, page) => this.props.changeCurrentpage(page);
+  handleChangePage = (event, page) => this.props.changeCurrentPage(page);
+
+  handleChangeEvent = id => () => this.props.changeActiveEvent(id);
 
   render() {
-    const { events, currentPage } = this.props;
+    console.log(this.props);
+    const { events, currentPage, activeEvent } = this.props;
     const { rowsPerPage, rowsHeight } = this.state;
     const emptyRows = rowsPerPage - (events.length - currentPage * rowsPerPage);
 
@@ -37,7 +40,10 @@ export default class Events extends React.Component {
             {events
               ? events.slice(currentPage * rowsPerPage, currentPage * rowsPerPage + rowsPerPage)
                 .map(event => (
-                <TableRow className={styles.row} key={event.id}>
+                <TableRow
+                  className={event.id === activeEvent ? styles.row_active : styles.row}
+                  key={event.id}
+                  onClick={this.handleChangeEvent(event.id)}>
                   <TableCell className={styles.date}>
                     {event.dates.start_date} <br /> {event.dates.start_time}
                   </TableCell>
@@ -84,5 +90,7 @@ export default class Events extends React.Component {
 Events.propTypes = {
   events: PropTypes.array,
   currentPage: PropTypes.number,
-  changeCurrentpage: PropTypes.func,
+  activeEvent: PropTypes.number,
+  changeCurrentPage: PropTypes.func,
+  changeActiveEvent: PropTypes.func,
 };

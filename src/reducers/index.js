@@ -16,13 +16,18 @@ const eventsFetchingState = handleActions({
 
 const events = handleActions({
   [actions.fetchEventsSuccess](state, { payload }) {
-    // console.log(events);
     return [...state, ...payload.events];
   },
 }, []);
 
 const currentPage = handleActions({
-  [actions.changeCurrentpage](state, { payload }) {
+  [actions.changeCurrentPage](state, { payload }) {
+    return payload;
+  },
+}, 0);
+
+const activeEvent = handleActions({
+  [actions.changeActiveEvent](state, { payload }) {
     return payload;
   },
 }, 0);
@@ -31,4 +36,5 @@ export default combineReducers({
   eventsFetchingState,
   events,
   currentPage,
+  activeEvent,
 });
