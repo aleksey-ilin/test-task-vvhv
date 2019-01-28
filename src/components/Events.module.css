@@ -24,32 +24,28 @@
   background-color: #eee;
 }
 
-.root .date {
-  width: 100px;
+.root .date,
+.root .image,
+.root .title,
+.root .place_title {
   padding: 0;
   text-align: center;
+}
+
+.root .date {
+  width: 10%
 }
 
 .root .image {
-  width: 200px;
-  padding: 0;
-  text-align: center;
+  width: 15%;
 }
 
 .root .image img {
-  width: 50%;
+  width: 55%;
 }
 
-.root .title {
-  width: 380px;
-  padding: 0;
-  text-align: center;
-}
-
-.root .place_title {
-  width: 380px;
-  padding: 0;
-  text-align: center;
+.root .title, .root .place_title {
+  width: 28%;
 }
 
 .root .place_address {

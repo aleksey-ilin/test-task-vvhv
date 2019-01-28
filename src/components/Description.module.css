@@ -1,6 +1,41 @@
 .root {
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-size: 0.87rem;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.87);
   width: 28%;
   height: 913px;
   margin: 15px;
   margin-left: 0;
+  overflow: auto;
+}
+
+.hint {
+  padding: 15px;
+}
+
+.description {
+  padding-top: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.description p {
+  margin: 0;
+}
+
+.detailed_description {
+  color: #f1636a;
+  margin-top: 0;
+  margin-bottom: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.price, .place_title, .place_address, .place_subway {
+  padding: 15px;
+  padding-top: 5px;
+  padding-bottom: 0;
 }

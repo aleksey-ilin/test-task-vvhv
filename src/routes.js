@@ -5,7 +5,7 @@ const currentTime = getCurrentTime();
 const corsProxy = 'https://cors-anywhere.herokuapp.com/';
 const host = 'https://kudago.com/public-api/v1.4/events/';
 const rawEventsSearchParams = {
-  page_size: 20,
+  page_size: 100,
   fields: 'id,title,dates,images,place',
   actual_since: currentTime,
   expand: 'dates,place',

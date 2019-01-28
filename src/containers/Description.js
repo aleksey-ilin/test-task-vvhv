@@ -3,7 +3,12 @@ import Component from '../components/Description';
 import * as actionCreators from '../actions';
 
 const Container = connect(
-  state => state,
+  (state) => {
+    const props = {
+      activeEvent: state.activeEvent,
+    };
+    return props;
+  },
   actionCreators,
 )(Component);
 

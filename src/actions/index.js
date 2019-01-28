@@ -21,7 +21,8 @@ export const fetchEvents = () => (dispatch) => {
     try {
       const url = routes.eventsUrl(page);
       const response = await axios.get(url);
-      if (response.data.results.length === 100) {
+      const pageSize = 100;
+      if (response.data.results.length === pageSize) {
         getEvents(page + 1, [...events, ...response.data.results]);
       } else {
         const filteredEvents = getFilteredEvents([...events, ...response.data.results]);

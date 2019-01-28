@@ -13,9 +13,9 @@ function LongTextSnackbar(props) {
   const { classes } = props;
 
   return (
-    <div>
+    <>
       <SnackbarContent className={classes.snackbar} message={'События загружаются...'} />
-    </div>
+    </>
   );
 }
 

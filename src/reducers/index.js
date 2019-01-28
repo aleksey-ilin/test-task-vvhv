@@ -40,7 +40,7 @@ const currentPage = handleActions({
 
 const activeEvent = handleActions({
   [actions.changeActiveEvent](state, { payload }) {
-    return { id: payload };
+    return { ...state, id: payload };
   },
   [actions.fetchDescriptionSuccess](state, { payload }) {
     return { ...state, description: payload };

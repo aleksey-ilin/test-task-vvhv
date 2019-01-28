@@ -17,12 +17,16 @@ export default class Events extends React.Component {
   handleChangePage = (event, page) => this.props.changeCurrentPage(page);
 
   handleChangeEvent = id => () => {
-    this.props.changeActiveEvent(id);
-    this.props.fetchDescription(id);
+    const { activeEvent, changeActiveEvent, fetchDescription } = this.props;
+    if (!activeEvent.id || activeEvent.id.split('.')[0] !== id.split('.')[0]) {
+      changeActiveEvent(id);
+      fetchDescription(id);
+    } else {
+      changeActiveEvent(id);
+    }
   };
 
   render() {
-    // console.log(this.props);
     const { events, currentPage, activeEvent } = this.props;
     const { rowsPerPage, rowsHeight } = this.state;
     const emptyRows = rowsPerPage - (events.length - currentPage * rowsPerPage);

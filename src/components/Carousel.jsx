@@ -12,7 +12,7 @@ const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
 const styles = theme => ({
   root: {
-    maxWidth: 400,
+    maxWidth: '100%',
     flexGrow: 1,
   },
   header: {
@@ -23,9 +23,9 @@ const styles = theme => ({
     backgroundColor: theme.palette.background.default,
   },
   img: {
-    height: 255,
+    height: 350,
     display: 'block',
-    maxWidth: 400,
+    maxWidth: '100%',
     overflow: 'hidden',
     width: '100%',
   },
@@ -54,7 +54,6 @@ class SwipeableTextMobileStepper extends React.Component {
 
   render() {
     const { activeEvent } = this.props;
-    console.log(activeEvent);
     const { images } = activeEvent.description;
     const { classes, theme } = this.props;
     const { activeStep } = this.state;
@@ -83,14 +82,14 @@ class SwipeableTextMobileStepper extends React.Component {
           className={classes.mobileStepper}
           nextButton={
             <Button size="small" onClick={this.handleNext} disabled={activeStep === maxSteps - 1}>
-              Next
+              Вперёд
               {theme.direction === 'rtl' ? <KeyboardArrowLeft /> : <KeyboardArrowRight />}
             </Button>
           }
           backButton={
             <Button size="small" onClick={this.handleBack} disabled={activeStep === 0}>
               {theme.direction === 'rtl' ? <KeyboardArrowRight /> : <KeyboardArrowLeft />}
-              Back
+              Назад
             </Button>
           }
         />

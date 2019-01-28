@@ -7,15 +7,14 @@ import Alert from './Alert';
 
 export default class App extends React.Component {
   render() {
-    console.log(this.props);
     return (
       <div className={styles.app}>
-        {this.props.events ? <><Events /><Description /></> : <Alert /> }
+        {this.props.events.length === 0 ? <Alert /> : <><Events /><Description /></> }
       </div>
     );
   }
 }
 
-Events.propTypes = {
+App.propTypes = {
   events: PropTypes.array,
 };
