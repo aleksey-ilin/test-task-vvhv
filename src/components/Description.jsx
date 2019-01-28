@@ -51,12 +51,14 @@ export default class Events extends React.Component {
   );
 
   renderAddress = (place) => {
+    console.log(place);
     const { lat, lon } = place.coords;
     const mapData = {
       center: [lat, lon],
       zoom: 14,
       controls: ['zoomControl', 'fullscreenControl'],
     };
+
     return (
       <>
         <YMaps>

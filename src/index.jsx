@@ -1,3 +1,4 @@
+import '@babel/polyfill';
 import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
@@ -10,15 +11,13 @@ import { fetchEvents } from './actions';
 
 /* eslint-disable no-underscore-dangle */
 // eslint-disable-next-line no-undef
-const ext = window.__REDUX_DEVTOOLS_EXTENSION__;
-const devtoolMiddleware = ext && ext();
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 /* eslint-enable */
 
 const store = createStore(
   reducers,
-  compose(
+  composeEnhancers(
     applyMiddleware(thunk),
-    devtoolMiddleware,
   ),
 );
 
