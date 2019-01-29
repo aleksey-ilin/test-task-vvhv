@@ -34,7 +34,12 @@
   text-decoration: underline;
 }
 
-.price, .place_title, .place_address, .place_subway {
+.price,
+.place_title,
+.place_address,
+.place_subway, .where,
+.additional_information,
+.age_restriction {
   padding: 15px;
   padding-top: 5px;
   padding-bottom: 0;

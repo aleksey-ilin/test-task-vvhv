@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Paper from '@material-ui/core/Paper';
-import { YMaps, Map, Placemark } from 'react-yandex-maps';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
@@ -50,40 +49,19 @@ export default class Events extends React.Component {
     </div>
   );
 
-  renderAddress = (place) => {
-    console.log(place);
-    const { lat, lon } = place.coords;
-    const mapData = {
-      center: [lat, lon],
-      zoom: 14,
-      controls: ['zoomControl', 'fullscreenControl'],
-    };
-
-    return (
-      <>
-        <YMaps>
-          <Map
-            style={{ width: 'auto', height: '300px' }}
-            defaultState={mapData}
-            modules={['control.ZoomControl', 'control.FullscreenControl']}
-          >
-            <Placemark
-              modules={['geoObject.addon.balloon']}
-              defaultGeometry={mapData.center}
-              properties={{ balloonContentBody: place.title }}
-            />
-          </Map>
-        </YMaps>
-        <div className={styles.place_title}>Место проведения: {place.title}</div>
-        <div className={styles.place_address}>Адрес: {place.address}</div>
-        <div className={styles.place_subway}>Ближайшее метро: {place.subway}</div>
-      </>
-    );
-  }
+  renderAddress = place => (
+    <>
+      <h3 className={styles.where}>Где?</h3>
+      <div className={styles.place_title}>Место проведения: {place.title}</div>
+      <div className={styles.place_address}>Адрес: {place.address}</div>
+      <div className={styles.place_subway}>Ближайшее метро: {place.subway}</div>
+    </>
+  );
 
   renderEventDescription() {
     const { activeEvent: { description } } = this.props;
     const { place } = description;
+    console.log(description);
     return (
       <>
         {this.renderDetailedDescription()}
@@ -99,8 +77,14 @@ export default class Events extends React.Component {
         (подробное описание события)
         </p>
         {place ? this.renderAddress(place) : null}
+        <h3 className={styles.additional_information}>Дополнительная информация</h3>
         {description.price
           ? <div className={styles.price}>Стоимость: {description.price}</div>
+          : null}
+        {description.age_restriction
+          ? <div className={styles.age_restriction}>
+              Возрастное ограничение: {description.age_restriction}
+            </div>
           : null}
       </>
     );
